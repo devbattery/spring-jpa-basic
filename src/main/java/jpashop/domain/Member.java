@@ -1,10 +1,14 @@
 package jpashop.domain;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
-//@Entity
+@Entity
 public class Member {
 
     @Id
@@ -19,6 +23,13 @@ public class Member {
     private String street;
 
     private String zipcode;
+
+    // 혹시나 양방향 쓸 일이 있으면
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
+
+    public Member() {
+    }
 
     public Long getId() {
         return id;
