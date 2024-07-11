@@ -15,24 +15,24 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member1 = new Member();
-            member1.setUsername("A");
-            Member member2 = new Member();
-            member2.setUsername("B");
-            Member member3 = new Member();
-            member3.setUsername("C");
+            Team team = new Team();
+            team.setName("TeamA");
 
-            System.out.println("==========================");
+            em.persist(team);
 
-            em.persist(member1);
-            em.persist(member2);
-            em.persist(member3);
+            Member member = new Member();
+            member.setUsername("member1");
+            member.setTeam(team);
 
-            System.out.println("member.getId() = " + member1.getId());
-            System.out.println("member.getId() = " + member2.getId());
-            System.out.println("member.getId() = " + member3.getId());
+            em.persist(member);
 
-            System.out.println("==========================");
+            // select 쿼리 로그 보기 위함
+            em.flush();
+            em.clear();
+
+            Member findMember = em.find(Member.class, member.getId());
+            Team findTeam = findMember.getTeam();
+            System.out.println("findTeam.getName() = " + findTeam.getName());
 
             tx.commit();
         } catch (Exception e) {
