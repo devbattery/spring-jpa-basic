@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 
-@Entity
+//@Entity
 @SequenceGenerator(
         name = "MEMBER_SEQ_GENERATOR",
         sequenceName = "MEMBER_SEQ,",
