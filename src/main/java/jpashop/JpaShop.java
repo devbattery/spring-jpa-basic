@@ -17,11 +17,6 @@ public class JpaShop {
         tx.begin();
 
         try {
-            Order order = new Order();
-            order.addOrderItem(new OrderItem());
-
-            em.persist(order);
-
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
