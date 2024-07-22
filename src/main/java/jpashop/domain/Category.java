@@ -11,8 +11,8 @@ import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
-public class Category {
+@Entity
+public class Category extends BaseEntity {
 
     @Id
     @GeneratedValue
