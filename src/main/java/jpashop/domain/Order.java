@@ -1,9 +1,11 @@
 package jpashop.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -15,8 +17,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
-//@Table(name = "ORDERS")
+@Entity
+@Table(name = "ORDERS")
 public class Order extends BaseEntity {
 
     @Id
@@ -28,15 +30,15 @@ public class Order extends BaseEntity {
      * 가급적이면 이렇게 단방향 매핑으로 놔두고,
      * 혹시나 나중에 역으로 조회할 일이 생길 때 컬렉션으로 Member 가서 양방향 매핑 해주기
      */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // order를 생성해서 delivery에 넣을 때 자동으로 생성 후 넣어줌
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     private LocalDateTime orderDateTime;
