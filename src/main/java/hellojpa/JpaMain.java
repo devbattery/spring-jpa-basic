@@ -17,6 +17,14 @@ public class JpaMain {
         tx.begin();
 
         try {
+            Member member = new Member();
+            member.setUsername("hello");
+            member.setHomeAddress(new Address("city", "street", "10000"));
+            member.setWorkAddress(new Address("city2", "street2", "20000"));
+            member.setPeriod(new Period());
+
+            em.persist(member);
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();

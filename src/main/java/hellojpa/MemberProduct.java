@@ -7,7 +7,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
-//@Entity
+@Entity
 public class MemberProduct {
 
     @Id
