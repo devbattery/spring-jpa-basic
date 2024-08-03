@@ -2,7 +2,7 @@ package jpashop.domain;
 
 import jakarta.persistence.Entity;
 
-//@Entity
+@Entity
 public class Book extends Item {
 
     private String author;

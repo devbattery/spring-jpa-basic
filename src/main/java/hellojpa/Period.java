@@ -3,7 +3,7 @@ package hellojpa;
 import jakarta.persistence.Embeddable;
 import java.time.LocalDateTime;
 
-@Embeddable
+//@Embeddable
 public class Period {
 
     private LocalDateTime startDate;
