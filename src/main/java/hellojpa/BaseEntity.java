@@ -3,7 +3,7 @@ package hellojpa;
 import jakarta.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
-//@MappedSuperclass
+@MappedSuperclass
 public class BaseEntity {
 
     private String createdBy;

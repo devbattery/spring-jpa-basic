@@ -3,7 +3,7 @@ package hellojpa;
 import jakarta.persistence.Embeddable;
 import java.util.Objects;
 
-//@Embeddable
+@Embeddable
 public class Address {
 
     private String city;
